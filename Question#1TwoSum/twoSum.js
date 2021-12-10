@@ -12,7 +12,37 @@ function twoSumBruteForce(nums, target) {
   return null;
 };
 
+// Optimal
 
+function twoSumOptimal(nums, target) {
+  const numsHash = {};
+  for (let p = 0; p < nums.length; p++) {
+    if (numsHash[nums[p]] >= 0) {
+      return [numsHash[nums[p]], p];
+    } else {
+      const numberToFind = target - nums[p];
+      numsHash[numberToFind] = p;
+    }
+  }
+  return null;
+}
+
+// ZTM
+
+function twoSumOptimalZTM(nums, target) {
+  const numsHash = {};
+
+  for (let p = 0; p < nums.length; p++) {
+    const currentHashVal = numsHash[nums[p]];
+    if (currentHashVal >= 0) {
+      return [currentHashVal, p];
+    } else {
+      const numberToFind = target - nums[p];
+      numsHash[numberToFind] = p;
+    }
+  }
+  return null;
+}
 
 /* Tests
 
@@ -20,12 +50,18 @@ function twoSumBruteForce(nums, target) {
 2.[] target: 1 | null;
 3.[1] target: 1 | null;
 4.[1, 3, 7, 9, 2] target: 25 | null;
-5.[1, 6] target: 7 | [0, 1]; 
+5.[1, 6] target: 7 | [0, 1];
 
 */
 
-console.log(twoSumBruteForce([1, 3, 7, 9, 2], 11));
-console.log(twoSumBruteForce([], 1));
-console.log(twoSumBruteForce([1], 1));
-console.log(twoSumBruteForce([1, 3, 7, 9, 2], 25));
-console.log(twoSumBruteForce([1, 6], 7));
+// console.log(twoSumBruteForce([1, 3, 7, 9, 2], 11));
+// console.log(twoSumBruteForce([], 1));
+// console.log(twoSumBruteForce([1], 1));
+// console.log(twoSumBruteForce([1, 3, 7, 9, 2], 25));
+// console.log(twoSumBruteForce([1, 6], 7));
+
+// console.log(twoSumOptimal([1, 3, 7, 9, 2], 11));
+// console.log(twoSumOptimal([], 1));
+// console.log(twoSumOptimal([1], 1));
+// console.log(twoSumOptimal([1, 3, 7, 9, 2], 25));
+// console.log(twoSumOptimal([1, 6], 7));
