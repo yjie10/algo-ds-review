@@ -16,12 +16,12 @@ function twoSumBruteForce(nums, target) {
 
 function twoSumOptimal(nums, target) {
   const numsHash = {};
-  for (let p1 = 0; p1 < nums.length; p1++) {
-    let numberToFind = target - nums[p1];
-    if (numsHash[nums[p1]] || numsHash[nums[p1]] === 0) {
-      return [numsHash[nums[p1]], p1];
+  for (let p = 0; p < nums.length; p++) {
+    if (numsHash[nums[p]] >= 0) {
+      return [numsHash[nums[p]], p];
     } else {
-      numsHash[numberToFind] = p1;
+      const numberToFind = target - nums[p];
+      numsHash[numberToFind] = p;
     }
   }
   return null;
